@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h1>إتمام الطلب</h1>
+<div class="card" style="max-width: 600px; margin: 0 auto;">
+    <p style="background: var(--accent-color); padding: 10px; border: 3px solid black; margin-bottom: 20px;">
+        <strong>طريقة الدفع:</strong> الدفع عند الاستلام
+    </p>
+    <form method="post">
+        {% csrf_token %}
+        <label>الاسم الكامل</label>
+        <input type="text" name="full_name" required placeholder="اكتب اسمك هنا">
+
+        <label>رقم الهاتف للتواصل</label>
+        <input type="text" name="phone_number" required placeholder="05xxxxxxxx">
+
+        <label>العنوان بالتفصيل</label>
+        <textarea name="address" rows="4" required placeholder="المدينة، الحي، الشارع..."></textarea>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <p>المبلغ المطلوب دفعه عند الاستلام: <strong>{{ total_price }} ريال</strong></p>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">تأكيد الطلب</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

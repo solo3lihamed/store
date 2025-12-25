@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h1>سلة المشتريات</h1>
+{% if cart_items %}
+<div class="card">
+    <table style="width: 100%; text-align: right; border-collapse: collapse;">
+        <thead>
+            <tr style="border-bottom: 3px solid black;">
+                <th style="padding: 10px;">المنتج</th>
+                <th style="padding: 10px;">الكمية</th>
+                <th style="padding: 10px;">السعر</th>
+                <th style="padding: 10px;">المجموع</th>
+                <th style="padding: 10px;">حذف</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td style="padding: 10px;">{{ item.product.name }}</td>
+                <td style="padding: 10px;">{{ item.quantity }}</td>
+                <td style="padding: 10px;">{{ item.product.price }}</td>
+                <td style="padding: 10px;">{{ item.total_price }}</td>
+                <td style="padding: 10px;">
+                    <a href="{% url 'cart_remove' item.product.pk %}" style="color: red; font-weight: bold;">X</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div style="margin-top: 20px; border-top: 3px solid black; padding-top: 20px; text-align: left;">
+        <h2>المجموع الكلي: {{ total_price }} ريال</h2>
+        <a href="{% url 'order_create' %}" class="btn btn-success" style="font-size: 1.2rem;">إتمام الطلب (الدفع عند
+            الاستلام)</a>
+    </div>
+</div>
+{% else %}
+<p>السلة فارغة، تسوق الآن!</p>
+<a href="{% url 'product_list' %}" class="btn">العودة للمتجر</a>
+{% endif %}
+{% endblock %}

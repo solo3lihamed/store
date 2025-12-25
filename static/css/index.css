@@ -1,0 +1,178 @@
+/* Neo-Brutalism Variables */
+:root {
+    --bg-color: #fff9e6; /* Soft yellow bg */
+    --main-color: #ff6b6b; /* Vibrant red */
+    --accent-color: #4ecdc4; /* Cyan */
+    --text-color: #2d3436;
+    --border-color: #000;
+    --border-width: 3px;
+    --shadow-offset: 4px;
+    --font-heading: 'Courier New', Courier, monospace;
+    --font-body: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #fff;
+    border-bottom: var(--border-width) solid var(--border-color);
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: var(--main-color);
+    padding: 5px 10px;
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border-color);
+    margin-left: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-links a {
+    font-family: var(--font-heading);
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+    border: var(--border-width) solid var(--border-color);
+    padding: 10px 15px;
+    background: #fff;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.nav-links a:hover {
+    background: var(--accent-color);
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border-color);
+}
+
+/* Cards */
+.card {
+    background: #fff;
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border-color);
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--border-color);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.product-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border: var(--border-width) solid var(--border-color);
+    margin-bottom: 15px;
+}
+
+.product-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background: var(--accent-color);
+    color: black;
+    border: var(--border-width) solid var(--border-color);
+    padding: 10px 20px;
+    font-family: var(--font-heading);
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border-color);
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--border-color);
+    background: #45b7af;
+}
+
+.btn-primary {
+    background: var(--main-color);
+}
+
+.btn-success {
+    background: #7bed9f;
+}
+
+/* Forms */
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: var(--border-width) solid var(--border-color);
+    font-family: var(--font-body);
+    box-sizing: border-box;
+    background: #fff;
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--accent-color);
+}
+
+footer {
+    border-top: var(--border-width) solid var(--border-color);
+    padding: 40px 0;
+    margin-top: 60px;
+    text-align: center;
+    background: #fff;
+    font-family: var(--font-heading);
+}
+
+/* RTL Support for Arabic */
+[dir="rtl"] .logo {
+    margin-left: 0;
+    margin-right: 20px;
+    box-shadow: calc(-1 * var(--shadow-offset)) var(--shadow-offset) 0 var(--border-color);
+}
+
+[dir="rtl"] .logo:hover, [dir="rtl"] .btn:hover, [dir="rtl"] .nav-links a:hover {
+    box-shadow: -8px 8px 0 var(--border-color);
+    transform: translate(2px, -2px);
+}
+
+[dir="rtl"] .nav-links a {
+    margin-right: 0;
+    margin-left: 20px;
+    box-shadow: calc(-1 * var(--shadow-offset)) var(--shadow-offset) 0 var(--border-color); /* Shadow on left */
+}

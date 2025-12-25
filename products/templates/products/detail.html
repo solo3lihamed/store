@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div style="display: flex; gap: 40px; margin-top: 40px; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 300px;">
+        {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}"
+            style="width: 100%; border: 3px solid black; box-shadow: 8px 8px 0 black;">
+        {% endif %}
+    </div>
+    <div style="flex: 1;">
+        <h1 style="font-size: 3rem; font-family: var(--font-heading); margin-top: 0;">{{ product.name }}</h1>
+        <p
+            style="font-size: 1.5rem; background: var(--main-color); display: inline-block; padding: 5px 10px; border: 3px solid black; color: white;">
+            {{ product.price }} ريال</p>
+        <p style="font-size: 1.2rem; line-height: 1.6;">{{ product.description }}</p>
+
+        <a href="{% url 'cart_add' product.pk %}" class="btn btn-primary"
+            style="font-size: 1.5rem; margin-top: 20px;">أضف إلى السلة</a>
+    </div>
+</div>
+{% endblock %}

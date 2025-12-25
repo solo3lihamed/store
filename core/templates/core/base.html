@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="rtl"> <!-- RTL by default for Arabic context -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر الموضة العجيب</title> <!-- Funny Fashion Store -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'product_list' %}" class="logo">الموضة العجيبة</a>
+        <div class="nav-links">
+            <a href="{% url 'product_list' %}?category=clothes">ملابس</a>
+            <a href="{% url 'product_list' %}?category=shoes">أحذية</a>
+            <a href="{% url 'cart_detail' %}">السلة</a>
+            <a href="{% url 'contact' %}">اتصل بنا</a>
+        </div>
+    </div>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 متجر الموضة المميز. جميع الحقوق محفوظة.</p>
+        <p>123 شارع الموضة، مدينة الأحلام</p>
+    </footer>
+</body>
+</html>

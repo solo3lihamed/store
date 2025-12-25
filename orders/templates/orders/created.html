@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="card" style="text-align: center; padding: 50px;">
+    <h1 style="color: var(--main-color);">تم استلام طلبك بنجاح!</h1>
+    <p>رقم الطلب: #{{ order.id }}</p>
+    <p>سيتم التواصل معك قريباً لتوصيل الطلب.</p>
+    <p>شكراً لتسوقك معنا!</p>
+    <a href="{% url 'product_list' %}" class="btn" style="margin-top: 20px;">العودة للمتجر</a>
+</div>
+{% endblock %}

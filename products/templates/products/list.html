@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h1
+    style="font-family: var(--font-heading); margin-bottom: 30px; border-bottom: 3px solid black; display: inline-block;">
+    أحدث المنتجات</h1>
+
+<div class="product-grid">
+    {% for product in products %}
+    <div class="card">
+        {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+        {% else %}
+        <div class="product-image"
+            style="background: #eee; display: flex; align-items: center; justify-content: center;">No Image</div>
+        {% endif %}
+        <h2 class="product-title">{{ product.name }}</h2>
+        <p style="font-weight: bold; font-size: 1.2rem;">{{ product.price }} ريال</p>
+        <a href="{% url 'product_detail' product.pk %}" class="btn">شاهد التفاصيل</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
