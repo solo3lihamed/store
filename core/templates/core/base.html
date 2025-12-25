@@ -7,25 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>متجر الموضة العجيب</title> <!-- Funny Fashion Store -->
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
     <div class="navbar">
         <a href="{% url 'product_list' %}" class="logo">الموضة العجيبة</a>
         <div class="nav-links">
-            <a href="{% url 'product_list' %}?category=clothes">ملابس</a>
-            <a href="{% url 'product_list' %}?category=shoes">أحذية</a>
-            <a href="{% url 'cart_detail' %}">السلة</a>
-            <a href="{% url 'contact' %}">اتصل بنا</a>
+            <a href="{% url 'product_list' %}" title="الرئيسية"><i class="fas fa-home"></i></a>
+            <a href="{% url 'cart_detail' %}" title="السلة"><i class="fas fa-shopping-cart"></i></a>
+            <a href="{% url 'contact' %}" title="اتصل بنا"><i class="fas fa-envelope"></i></a>
             {% if user.is_authenticated %}
-            <a href="{% url 'profile' %}">الملف الشخصي</a>
+            <a href="{% url 'profile' %}" title="الملف الشخصي"><i class="fas fa-user"></i></a>
             <form action="{% url 'logout' %}" method="post" style="display: inline;">
                 {% csrf_token %}
-                <button type="submit" class="btn" style="padding: 5px 10px; font-size: 0.9rem;">خروج</button>
+                <button type="submit" class="btn" style="padding: 5px 10px; font-size: 1rem;" title="خروج"><i
+                        class="fas fa-sign-out-alt"></i></button>
             </form>
             {% else %}
-            <a href="{% url 'login' %}">دخول</a>
-            <a href="{% url 'signup' %}">تسجيل</a>
+            <a href="{% url 'login' %}" title="دخول"><i class="fas fa-sign-in-alt"></i></a>
+            <a href="{% url 'signup' %}" title="تسجيل"><i class="fas fa-user-plus"></i></a>
             {% endif %}
         </div>
     </div>

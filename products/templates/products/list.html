@@ -2,8 +2,16 @@
 
 {% block content %}
 <h1
-    style="font-family: var(--font-heading); margin-bottom: 30px; border-bottom: 3px solid black; display: inline-block;">
+    style="font-family: var(--font-heading); margin-bottom: 20px; border-bottom: 3px solid black; display: inline-block;">
     أحدث المنتجات</h1>
+
+<!-- Filter Section -->
+<div class="card" style="margin-bottom: 30px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+    <h3 style="margin: 0;">تصفية المنتجات:</h3>
+    <a href="{% url 'product_list' %}" class="btn" style="background: white;">الكل</a>
+    <a href="{% url 'product_list' %}?category=clothes" class="btn" style="background: #ffcc00;">ملابس</a>
+    <a href="{% url 'product_list' %}?category=shoes" class="btn" style="background: #ff99cc;">أحذية</a>
+</div>
 
 <div class="product-grid">
     {% for product in products %}
