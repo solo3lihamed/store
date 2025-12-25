@@ -1,8 +1,11 @@
 /* Neo-Brutalism Variables */
 :root {
-    --bg-color: #fff9e6; /* Soft yellow bg */
-    --main-color: #ff6b6b; /* Vibrant red */
-    --accent-color: #4ecdc4; /* Cyan */
+    --bg-color: #fff9e6;
+    /* Soft yellow bg */
+    --main-color: #ff6b6b;
+    /* Vibrant red */
+    --accent-color: #4ecdc4;
+    /* Cyan */
     --text-color: #2d3436;
     --border-color: #000;
     --border-width: 3px;
@@ -135,7 +138,8 @@ body {
 }
 
 /* Forms */
-form input, form textarea {
+form input,
+form textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -145,7 +149,8 @@ form input, form textarea {
     background: #fff;
 }
 
-form input:focus, form textarea:focus {
+form input:focus,
+form textarea:focus {
     outline: none;
     box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--accent-color);
 }
@@ -166,7 +171,9 @@ footer {
     box-shadow: calc(-1 * var(--shadow-offset)) var(--shadow-offset) 0 var(--border-color);
 }
 
-[dir="rtl"] .logo:hover, [dir="rtl"] .btn:hover, [dir="rtl"] .nav-links a:hover {
+[dir="rtl"] .logo:hover,
+[dir="rtl"] .btn:hover,
+[dir="rtl"] .nav-links a:hover {
     box-shadow: -8px 8px 0 var(--border-color);
     transform: translate(2px, -2px);
 }
@@ -174,5 +181,34 @@ footer {
 [dir="rtl"] .nav-links a {
     margin-right: 0;
     margin-left: 20px;
-    box-shadow: calc(-1 * var(--shadow-offset)) var(--shadow-offset) 0 var(--border-color); /* Shadow on left */
+    box-shadow: calc(-1 * var(--shadow-offset)) var(--shadow-offset) 0 var(--border-color);
+    /* Shadow on left */
+}
+
+/* Response Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        margin: 0 0 20px 0;
+        display: block;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links a {
+        display: block;
+        margin: 0;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
 }

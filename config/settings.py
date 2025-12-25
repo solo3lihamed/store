@@ -42,7 +42,12 @@ INSTALLED_APPS = [
     'products',
     'orders',
     'pages',
+    'accounts',
 ]
+
+LOGIN_REDIRECT_URL = 'product_list'
+LOGOUT_REDIRECT_URL = 'product_list'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,12 +1,22 @@
 from django.db import models
 from products.models import Product
 
+from django.contrib.auth.models import User
+
 class Order(models.Model):
+    STATUS_CHOICES = (
+        ('pending', 'قيد الانتظار'),
+        ('shipped', 'تم الشحن'),
+        ('delivered', 'تم التوصيل'),
+    )
+
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=200)
     address = models.CharField(max_length=500)
     phone_number = models.CharField(max_length=20)
     created_at = models.DateTimeField(auto_now_add=True)
     is_paid = models.BooleanField(default=False)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     # Payment method is implicitly Cash on Delivery as per requirements
 
     def __str__(self):

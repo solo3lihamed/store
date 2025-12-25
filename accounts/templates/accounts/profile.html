@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h1>الملف الشخصي: {{ user.username }}</h1>
+
+<div class="card">
+    <h2>طلباتي</h2>
+    {% if orders %}
+    <table style="width: 100%; text-align: right; border-collapse: collapse; margin-top: 20px;">
+        <thead>
+            <tr style="border-bottom: 3px solid black;">
+                <th style="padding: 10px;">رقم الطلب</th>
+                <th style="padding: 10px;">التاريخ</th>
+                <th style="padding: 10px;">المجموع</th>
+                <th style="padding: 10px;">الحالة</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td style="padding: 10px;">#{{ order.id }}</td>
+                <td style="padding: 10px;">{{ order.created_at|date:"Y-m-d" }}</td>
+                <td style="padding: 10px;">{{ order.get_total_cost }} ريال</td>
+                <td style="padding: 10px;">
+                    <span style="background: 
+                        {% if order.status == 'pending' %}gold
+                        {% elif order.status == 'shipped' %}cyan
+                        {% elif order.status == 'delivered' %}lime
+                        {% endif %}; 
+                        border: 2px solid black; padding: 2px 8px; font-weight: bold;">
+                        {{ order.get_status_display }}
+                    </span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>لم تقم بطلب أي شيء بعد. <a href="{% url 'product_list' %}">تسوق الآن!</a></p>
+    {% endif %}
+</div>
+{% endblock %}

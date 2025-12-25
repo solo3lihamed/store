@@ -39,7 +39,9 @@ def order_create(request):
         address = request.POST.get('address')
         phone_number = request.POST.get('phone_number')
         
-        order = Order.objects.create(full_name=full_name, address=address, phone_number=phone_number)
+        user = request.user if request.user.is_authenticated else None
+        
+        order = Order.objects.create(full_name=full_name, address=address, phone_number=phone_number, user=user)
         for product_id, quantity in cart.items():
             product = get_object_or_404(Product, pk=product_id)
             OrderItem.objects.create(order=order, product=product, price=product.price, quantity=quantity)

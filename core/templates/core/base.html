@@ -1,12 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="rtl"> <!-- RTL by default for Arabic context -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>متجر الموضة العجيب</title> <!-- Funny Fashion Store -->
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
+
 <body>
     <div class="navbar">
         <a href="{% url 'product_list' %}" class="logo">الموضة العجيبة</a>
@@ -15,6 +17,16 @@
             <a href="{% url 'product_list' %}?category=shoes">أحذية</a>
             <a href="{% url 'cart_detail' %}">السلة</a>
             <a href="{% url 'contact' %}">اتصل بنا</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}">الملف الشخصي</a>
+            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn" style="padding: 5px 10px; font-size: 0.9rem;">خروج</button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}">دخول</a>
+            <a href="{% url 'signup' %}">تسجيل</a>
+            {% endif %}
         </div>
     </div>
 
@@ -28,4 +40,5 @@
         <p>123 شارع الموضة، مدينة الأحلام</p>
     </footer>
 </body>
+
 </html>
